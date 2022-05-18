@@ -45,6 +45,12 @@ class Command {
          * @type {function}
          */
         this.executeSelectMenu = exports.executeSelectMenu;
+
+        /**
+         * The function to execute when a modal dialog is submitted
+         * @type {function}
+         */
+        this.executeModal = exports.executeModal;
     }
 }
 

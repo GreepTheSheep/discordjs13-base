@@ -65,6 +65,18 @@ client.on('interactionCreate', async interaction => {
 
             await command.executeButton(interaction, buttonId, argument, commands);
 
+        } else if (interaction.isModalSubmit()) {
+            const command = commands.find(c => c.name === interaction.customId.split('_')[0]);
+            if (!command) return;
+
+            let idIndexOf = interaction.customId.indexOf('_')+1,
+                modalId = interaction.customId.substring(idIndexOf, interaction.customId.indexOf('_', idIndexOf)),
+                argument = null;
+
+            if (modalId === command.name+'_') modalId = interaction.customId.substring(idIndexOf);
+            else argument = interaction.customId.substring(interaction.customId.indexOf('_', idIndexOf)+1);
+
+            await command.executeModal(interaction, modalId, argument, commands);
         }
     } catch (err) {
         interaction.reply({

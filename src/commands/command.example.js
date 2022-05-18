@@ -117,3 +117,16 @@ exports.executeSelectMenu = async (interaction, categoryId, argument, commands) 
         interaction.update('hey! ' + interaction.values[0]);
     }
 };
+
+/**
+ * This method is executed when a modal dialog is submitted
+ * @param {ModalSubmitInteraction} interaction
+ * @param {string} modalId
+ * @param {string} argument
+ * @param {Command[]} commands
+ */
+exports.executeModal = async (interaction, modalId, argument, commands) => {
+    if (modalId === 'modaltest') {
+        interaction.update('hey! ' + interaction.values[0]);
+    }
+};
